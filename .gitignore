@@ -1,52 +1,26 @@
-# Prerequisites
-*.d
+#include <stdio.h>
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+int main() {
+    int sum = 0, num, digit;
+    printf("Summing up all even four-digit numbers...\n");
+    for (num = 1000; num <= 9998; num += 2) {
+        sum += num;
+    }
+    printf("Sum: %d\n", sum);
+    while (sum > 9) {
+        int tempSum = 0;
+        while (sum > 0) {
+            digit = sum % 10;
+            tempSum += digit;
+            sum /= 10;
+        }
+        sum = tempSum;
+    }
+    printf("Single digit: %d\n", sum);
+    if (sum % 2 == 0) {
+        printf("Even found\n");
+    } else {
+        printf("Odd found\n");
+    }
+    return 0;
+}
